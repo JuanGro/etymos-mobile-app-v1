@@ -1,0 +1,8 @@
+{
+  "name": "etymos-mobile-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "df186dae"
+}

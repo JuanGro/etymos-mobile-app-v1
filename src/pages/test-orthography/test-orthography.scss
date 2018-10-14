@@ -1,3 +1,11 @@
-page-test-orthography {
+div.section {
+    height: 50%;
+}
 
+div.options {
+    height: 33%;
+}
+
+.no-scroll .scroll-content{
+    overflow: hidden;
 }

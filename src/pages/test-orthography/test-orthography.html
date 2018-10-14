@@ -12,16 +12,28 @@
 
 </ion-header>
 
-
-<ion-content padding>
-  <ion-card *ngFor="let test of tests">
-    <ion-card-content>
-      <p>{{ test?.test.id }}</p>
-      <p>{{ test?.test.phrase }}</p>
-      <p>{{ test?.word.id }}</p>
-      <p>{{ test?.word.word_word }}</p>
-      <p>{{ test?.word.meaning_word }}</p>
-      <p>{{ test?.word.image_word }}</p>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+<ion-content text-center class="no-scroll">
+    <div class="section">
+      <ion-grid style="height: 100%">
+        <ion-row justify-content-center align-items-center style="height: 100%">
+          <ion-col>
+            <h1>{{ test?.test.phrase }}</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+    <hr />
+  
+    <div class="section">
+      <div *ngFor="let option of test?.options" class="options">
+        <ion-grid style="height: 100%;">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <button ion-button (click)="sendAnswer(option?.correct)" color="primary" block>{{ option?.word_option }}</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </ion-content>

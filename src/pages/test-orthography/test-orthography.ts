@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ModalController } from 'ionic-angular';
-import { TestModalPage } from './../test-modal/test-modal';
-import { LoadingController } from 'ionic-angular';
-
-// Service
-import { HttpService } from '../../services/http.service';
+import { IonicPage, ModalController, NavParams, ViewController } from 'ionic-angular';
 
 // Model
 import { TestComplete } from './../../models/test-complete.model';
+import { TestModalPage } from '../test-modal/test-modal';
 
 /**
  * Generated class for the TestOrthographyPage page.
@@ -23,52 +18,35 @@ import { TestComplete } from './../../models/test-complete.model';
   templateUrl: 'test-orthography.html',
 })
 export class TestOrthographyPage {
-  public tests: TestComplete[];
+  public test: TestComplete;
+  public tests: TestComplete[]
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public httpService: HttpService,
     public modalCtrl: ModalController,
-    public loadingCtrl: LoadingController
+    public navParams: NavParams,
+    public viewCtrl: ViewController
     ) {
+    this.tests = navParams.get('tests');
   }
 
   ionViewDidLoad() {
-    this.getTests();
+    this.getTest();
   }
 
-  getTests() {
-    this.tests = [];
-
-    this.httpService.get('https://etymos.herokuapp.com/tests')
-    .subscribe(
-      tests => {
-        const loader = this.loadingCtrl.create({
-          content: "Please wait..."
-        });
-        loader.present();
-
-        if (tests) {
-          for (let test of tests) {
-            this.tests.push(new TestComplete(test));
-            this.presentModal();
-          }
-        }
-
-        loader.dismiss();
-      },
-      error => {
-
-      }
-    );
+  private getTest() {
+    this.test = this.tests.pop();
   }
 
-  presentModal() {
-    let modal = this.modalCtrl.create(TestOrthographyPage);
-    modal.onDidDismiss(data => {
-      console.log(data);
-    });
-    modal.present();
+  public sendAnswer(option: string) {
+    console.log(option);
+    if (this.tests.length > 0) {
+      let modal = this.modalCtrl.create(TestOrthographyPage, { tests: this.tests });
+      modal.present();
+      this.viewCtrl.dismiss();
+    } else {
+      let modal = this.modalCtrl.create(TestModalPage);
+      modal.present();
+      this.viewCtrl.dismiss();
+    }
   }
 }

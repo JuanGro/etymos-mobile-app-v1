@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TestOrthography</ion-title>
+    <ion-title>Comprobar ortografía</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-card *ngFor="let test of tests">
+    <ion-card-content>
+      <p>{{ test?.test.id }}</p>
+      <p>{{ test?.test.phrase }}</p>
+      <p>{{ test?.word.id }}</p>
+      <p>{{ test?.word.word_word }}</p>
+      <p>{{ test?.word.meaning_word }}</p>
+      <p>{{ test?.word.image_word }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

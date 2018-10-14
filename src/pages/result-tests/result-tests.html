@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-card>
+  <ion-card *ngIf="words_answered_correctly.length > 0">
     <ion-card-header>
       Respuestas correctas
     </ion-card-header>
@@ -27,7 +27,7 @@
     </ion-list>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="words_to_practice.length > 0">
     <ion-card-header>
       Palabras a practicar
     </ion-card-header>
@@ -39,4 +39,8 @@
       </button>
     </ion-list>
   </ion-card>
+
+  <button *ngIf="words_to_practice.length == 0" ion-button color="success" block>Regresar</button>
+  <button *ngIf="words_to_practice.length > 0" ion-button color="danger" block>Practicar palabras</button>
+
 </ion-content>

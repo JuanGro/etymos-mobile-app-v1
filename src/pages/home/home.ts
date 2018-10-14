@@ -12,7 +12,6 @@ import { Option } from './../../models/option.model';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public options: Option[];
   public option: Option;
 
   constructor(
@@ -21,7 +20,6 @@ export class HomePage {
     ) {}
 
   ionViewDidLoad() {
-    this.options = [];
     this.getList();
   }
 

@@ -3,7 +3,7 @@ import { IonicPage, ModalController, NavParams, ViewController } from 'ionic-ang
 
 // Model
 import { TestComplete } from './../../models/test-complete.model';
-import { TestModalPage } from '../test-modal/test-modal';
+// import { TestModalPage } from '../test-modal/test-modal';
 
 /**
  * Generated class for the TestOrthographyPage page.
@@ -44,8 +44,8 @@ export class TestOrthographyPage {
       modal.present();
       this.viewCtrl.dismiss();
     } else {
-      let modal = this.modalCtrl.create(TestModalPage);
-      modal.present();
+      // let modal = this.modalCtrl.create(TestModalPage);
+      // modal.present();
       this.viewCtrl.dismiss();
     }
   }

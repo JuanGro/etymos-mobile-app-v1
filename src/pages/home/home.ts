@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+import { NavController, ModalController, LoadingController, AlertController } from 'ionic-angular';
 
 // Service
 import { HttpService } from '../../services/http.service';
@@ -21,6 +20,7 @@ export class HomePage {
     public navCtrl: NavController,
     public httpService: HttpService,
     public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
     public modalCtrl: ModalController
   ) {}
 
@@ -47,13 +47,22 @@ export class HomePage {
           let modal = this.modalCtrl.create(TestOrthographyPage, { tests: testList });
           modal.present();
         } else {
-
+          this.showAlert('Error :(', '¡No existen tests!', 'OK');
         }
         loader.dismiss();
       },
       error => {
-
+        this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
       }
     );
+  }
+
+  public showAlert(title: string, msg: string, buttonMsg: string) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      subTitle: msg,
+      buttons: [buttonMsg]
+    });
+    alert.present();
   }
 }

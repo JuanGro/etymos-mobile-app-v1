@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { TestOrthographyPage } from '../pages/test-orthography/test-orthography';
+import { LearnNewWordsPage } from '../pages/learn-new-words/learn-new-words';
 
 // Services
 import { HttpService } from './../services/http.service';
@@ -14,7 +16,9 @@ import { HttpService } from './../services/http.service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TestOrthographyPage,
+    LearnNewWordsPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import { HttpService } from './../services/http.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    TestOrthographyPage,
+    LearnNewWordsPage
   ],
   providers: [
     StatusBar,

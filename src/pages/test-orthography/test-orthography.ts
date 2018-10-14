@@ -3,7 +3,7 @@ import { IonicPage, ModalController, NavParams, ViewController } from 'ionic-ang
 
 // Model
 import { TestComplete } from './../../models/test-complete.model';
-// import { TestModalPage } from '../test-modal/test-modal';
+import { Word } from '../../models/word.model';
 
 /**
  * Generated class for the TestOrthographyPage page.
@@ -19,7 +19,9 @@ import { TestComplete } from './../../models/test-complete.model';
 })
 export class TestOrthographyPage {
   public test: TestComplete;
-  public tests: TestComplete[]
+  public tests: TestComplete[];
+  public words_to_practice: Word[];
+  public words_answered_correctly: Word[];
 
   constructor(
     public modalCtrl: ModalController,
@@ -27,6 +29,8 @@ export class TestOrthographyPage {
     public viewCtrl: ViewController
     ) {
     this.tests = navParams.get('tests');
+    this.words_answered_correctly = navParams.get('words_answered_correctly');
+    this.words_to_practice = navParams.get('words_to_practice');
   }
 
   ionViewDidLoad() {
@@ -37,15 +41,24 @@ export class TestOrthographyPage {
     this.test = this.tests.pop();
   }
 
-  public sendAnswer(option: string) {
-    console.log(option);
+  public sendAnswer(option: boolean) {
+    if (option == false) this.words_to_practice.push(new Word(this.test.word));
+    else this.words_answered_correctly.push(new Word(this.test.word));
+
     if (this.tests.length > 0) {
-      let modal = this.modalCtrl.create(TestOrthographyPage, { tests: this.tests });
+      let modal = this.modalCtrl.create(TestOrthographyPage,
+        { 
+          tests: this.tests,
+          words_answered_correctly: this.words_answered_correctly,
+          words_to_practice: this.words_to_practice
+        });
       modal.present();
       this.viewCtrl.dismiss();
     } else {
       // let modal = this.modalCtrl.create(TestModalPage);
       // modal.present();
+      console.log(this.words_to_practice);
+      console.log(this.words_answered_correctly);
       this.viewCtrl.dismiss();
     }
   }

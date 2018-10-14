@@ -44,7 +44,12 @@ export class HomePage {
           for (let test of tests) {
             testList.push(new TestComplete(test));
           }
-          let modal = this.modalCtrl.create(TestOrthographyPage, { tests: testList });
+          let modal = this.modalCtrl.create(TestOrthographyPage,
+            { 
+              tests: testList,
+              words_answered_correctly: [],
+              words_to_practice: []
+            });
           modal.present();
         } else {
           this.showAlert('Error :(', '¡No existen tests!', 'OK');

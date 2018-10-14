@@ -40,7 +40,7 @@
     </ion-list>
   </ion-card>
 
-  <button *ngIf="words_to_practice.length == 0" ion-button color="success" block>Regresar</button>
+  <button *ngIf="words_to_practice.length == 0" (click)="sendToHome()" ion-button color="success" block>Regresar</button>
   <button *ngIf="words_to_practice.length > 0" ion-button color="danger" block>Practicar palabras</button>
 
 </ion-content>

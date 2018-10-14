@@ -26,4 +26,12 @@ export class ResultTestsPage {
     this.words_answered_correctly = navParams.get('words_answered_correctly');
     this.words_to_practice = navParams.get('words_to_practice');
   }
+
+  private practiceWords() {
+    
+  }
+
+  private sendToHome() {
+    this.viewCtrl.dismiss();
+  }
 }

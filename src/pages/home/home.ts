@@ -12,9 +12,9 @@ import { LearnNewWordsPage } from './../../pages/learn-new-words/learn-new-words
 export class HomePage {
   constructor(
     public navCtrl: NavController
-    ) {}
+  ) {}
 
-  redirectToPage(page: string) {
+  private redirectToPage(page: string) {
     if (page == 'testOrthography') this.navCtrl.push(TestOrthographyPage);
     else if (page == 'learnNewWords') this.navCtrl.push(LearnNewWordsPage);
   }

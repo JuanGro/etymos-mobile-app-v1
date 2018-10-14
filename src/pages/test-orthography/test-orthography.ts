@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
+import { TestModalPage } from './../test-modal/test-modal';
+import { LoadingController } from 'ionic-angular';
 
 // Service
 import { HttpService } from '../../services/http.service';
@@ -25,7 +28,9 @@ export class TestOrthographyPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public httpService: HttpService
+    public httpService: HttpService,
+    public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController
     ) {
   }
 
@@ -36,13 +41,30 @@ export class TestOrthographyPage {
   getTests() {
     this.tests = [];
 
-    this.httpService.get('https://etymos.herokuapp.com/tests').subscribe(tests => {
-      if (tests) {
-        for (let test of tests) {
-          this.tests.push(new TestComplete(test));
+    this.httpService.get('https://etymos.herokuapp.com/tests')
+    .subscribe(
+      tests => {
+        const loader = this.loadingCtrl.create({
+          content: "Please wait..."
+        });
+        loader.present();
+        
+        if (tests) {
+          for (let test of tests) {
+            this.tests.push(new TestComplete(test));
+          }
         }
+
+        loader.dismiss();
+      },
+      error => {
+
       }
-    });
+    );
   }
 
+  presentModal() {
+    const modal = this.modalCtrl.create(TestModalPage);
+    modal.present();
+  }
 }

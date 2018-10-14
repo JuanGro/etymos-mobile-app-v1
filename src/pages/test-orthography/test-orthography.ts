@@ -48,10 +48,11 @@ export class TestOrthographyPage {
           content: "Please wait..."
         });
         loader.present();
-        
+
         if (tests) {
           for (let test of tests) {
             this.tests.push(new TestComplete(test));
+            this.presentModal();
           }
         }
 
@@ -64,7 +65,10 @@ export class TestOrthographyPage {
   }
 
   presentModal() {
-    const modal = this.modalCtrl.create(TestModalPage);
+    let modal = this.modalCtrl.create(TestOrthographyPage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
     modal.present();
   }
 }

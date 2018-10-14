@@ -4,6 +4,7 @@ import { IonicPage, ModalController, NavParams, ViewController } from 'ionic-ang
 // Model
 import { TestComplete } from './../../models/test-complete.model';
 import { Word } from '../../models/word.model';
+import { ResultTestsPage } from '../result-tests/result-tests';
 
 /**
  * Generated class for the TestOrthographyPage page.
@@ -55,10 +56,12 @@ export class TestOrthographyPage {
       modal.present();
       this.viewCtrl.dismiss();
     } else {
-      // let modal = this.modalCtrl.create(TestModalPage);
-      // modal.present();
-      console.log(this.words_to_practice);
-      console.log(this.words_answered_correctly);
+      let modal = this.modalCtrl.create(ResultTestsPage,
+        {
+          words_answered_correctly: this.words_answered_correctly,
+          words_to_practice: this.words_to_practice
+        });
+      modal.present();
       this.viewCtrl.dismiss();
     }
   }

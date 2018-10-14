@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TestOrthographyPage } from '../pages/test-orthography/test-orthography';
 import { LearnNewWordsPage } from '../pages/learn-new-words/learn-new-words';
+import { ResultTestsPage } from '../pages/result-tests/result-tests';
 
 // Services
 import { HttpService } from './../services/http.service';
@@ -18,7 +19,8 @@ import { HttpService } from './../services/http.service';
     MyApp,
     HomePage,
     TestOrthographyPage,
-    LearnNewWordsPage
+    LearnNewWordsPage,
+    ResultTestsPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { HttpService } from './../services/http.service';
     MyApp,
     HomePage,
     TestOrthographyPage,
-    LearnNewWordsPage
+    LearnNewWordsPage,
+    ResultTestsPage
   ],
   providers: [
     StatusBar,

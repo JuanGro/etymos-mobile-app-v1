@@ -16,11 +16,17 @@ import { WordComplete } from '../../models/word-complete.model';
 })
 export class LearnNewWordsPage {
   public words: WordComplete[];
+  public word: WordComplete;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.words = navParams.get('words');
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {
+    this.getWord();
+  }
 
+  private getWord() {
+    this.word = this.words.pop();
+  }
 }

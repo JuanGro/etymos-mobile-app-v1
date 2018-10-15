@@ -19,11 +19,8 @@ export class LearnNewWordsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.words = navParams.get('words');
-    console.log(this.words);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LearnNewWordsPage');
-  }
+  ionViewDidLoad() {}
 
 }

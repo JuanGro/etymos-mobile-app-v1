@@ -33,8 +33,9 @@
             </button>
           </ion-list>
         </ion-card>
-        <button *ngIf="words_to_practice.length == 0" (click)="sendToHome()" ion-button color="success" block>Terminar</button>
-        <button *ngIf="words_to_practice.length > 0" (click)="practiceWords()" ion-button color="danger" block>Practicar palabras</button>
+        <br>
+        <button *ngIf="words_to_practice.length == 0" (click)="sendToHome()" ion-button color="primary" block>Terminar</button>
+        <button *ngIf="words_to_practice.length > 0" (click)="practiceWords()" ion-button color="primary" block>Practicar palabras</button>
       </ion-col>
     </ion-row>
   </ion-grid>

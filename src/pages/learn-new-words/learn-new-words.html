@@ -7,7 +7,7 @@
 <ion-content text-center class="no-scroll">
 
   <ion-slides pager>
-    <ion-slide *ngFor="let word of words">
+    <ion-slide>
       <div class="section">
         <ion-grid style="height: 100%">
           <ion-row justify-content-center align-items-center style="height: 100%">
@@ -32,34 +32,32 @@
       </div>
     </ion-slide>
 
-    <div *ngFor="let word of words">
-      <ion-slide *ngFor="let etymology of word?.etymologies">
-        <div class="section">
-          <ion-grid style="height: 100%">
-            <ion-row justify-content-center align-items-center style="height: 100%">
-              <ion-col>
-                <img src="{{ etymology?.image_etymology }}" class="slide-image"/>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-      
-        <hr />
-      
-        <div class="section">
-          <ion-grid style="height: 80%">
-            <ion-row justify-content-center align-items-center style="height: 100%">
-              <ion-col>
-                <h1>{{ etymology?.pattern }}</h1>
-                <p>{{ etymology?.meaning_etymology }}</p>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-      </ion-slide>
-    </div>
+    <ion-slide *ngFor="let etymology of word?.etymologies">
+      <div class="section">
+        <ion-grid style="height: 100%">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <img src="{{ etymology?.image_etymology }}" class="slide-image"/>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    
+      <hr />
+    
+      <div class="section">
+        <ion-grid style="height: 80%">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <h1>{{ etymology?.pattern }}</h1>
+              <p>{{ etymology?.meaning_etymology }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
 
-    <ion-slide *ngFor="let word of words">
+    <ion-slide>
       <div class="section">
         <ion-grid style="height: 100%">
           <ion-row justify-content-center align-items-center style="height: 100%">
@@ -102,7 +100,7 @@
         <ion-grid style="height: 80%;">
           <ion-row justify-content-center align-items-center style="height: 100%">
             <ion-col>
-              <button ion-button (click)="closeModal()" color="success" block>Terminar</button>
+              <button ion-button (click)="continue()" color="success" block>Continuar</button>
             </ion-col>
           </ion-row>
         </ion-grid>

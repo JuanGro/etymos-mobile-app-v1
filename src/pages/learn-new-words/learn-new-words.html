@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content text-center class="no-scroll">
+<!-- <ion-content text-center class="no-scroll">
   <div class="section">
     <ion-grid style="height: 100%">
       <ion-row justify-content-center align-items-center style="height: 100%">
@@ -35,4 +35,49 @@
       </ion-row>
     </ion-grid>
   </div>
+</ion-content> -->
+
+<ion-content text-center class="no-scroll">
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let word of words">
+      <!-- <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar> -->
+
+      <div class="section">
+        <ion-grid style="height: 100%">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <img src="{{ word?.word.image_word }}" class="slide-image"/>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    
+      <hr />
+    
+      <div class="section">
+        <ion-grid style="height: 80%">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <h1>{{ word?.word.word_word }}</h1>
+              <p>{{ word?.word.meaning_word }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/> -->
+      <h2 class="slide-title">¡Excelente!</h2>
+      <button ion-button large clear icon-end color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

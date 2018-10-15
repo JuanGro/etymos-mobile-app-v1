@@ -47,7 +47,7 @@ export class HomePage {
           }
           let modal = this.modalCtrl.create(TestOrthographyPage,
             { 
-              tests: testList.reverse(),
+              tests: testList,
               words_answered_correctly: [],
               words_to_practice: []
             });
@@ -80,7 +80,7 @@ export class HomePage {
           }
           let modal = this.modalCtrl.create(LearnNewWordsPage,
             { 
-              words: wordList.reverse()
+              words: wordList
             });
           modal.present();
         } else {

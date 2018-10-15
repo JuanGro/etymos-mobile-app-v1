@@ -23,7 +23,7 @@ export class LearnNewWordsPage {
   }
 
   ionViewDidLoad() {
-    this.getWord();
+    // this.getWord();
   }
 
   private getWord() {

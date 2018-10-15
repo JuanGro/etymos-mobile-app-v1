@@ -20,24 +20,14 @@
   <hr />
 
   <div class="section">
-    <div class="button-section">
-      <ion-grid style="height: 80%;">
-        <ion-row justify-content-center align-items-center style="height: 100%">
-          <ion-col>
-            <button ion-button (click)="redirectToPage('testOrthography')" color="primary" block>Comprobar ortografía</button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-
-    <div class="button-section">
-      <ion-grid style="height: 80%;">
-        <ion-row justify-content-center align-items-center style="height: 100%">
-          <ion-col>
-            <button ion-button (click)="redirectToPage('learnNewWords')" color="primary" block>Aprender nuevas palabras</button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
+    <ion-grid style="height: 80%;">
+      <ion-row justify-content-center align-items-center style="height: 100%">
+        <ion-col>
+          <button ion-button (click)="redirectToPage('testOrthography')" color="primary" block>Comprobar ortografía</button>
+          <br><br>
+          <button ion-button (click)="redirectToPage('learnNewWords')" color="primary" block>Aprender nuevas palabras</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

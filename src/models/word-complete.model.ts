@@ -1,14 +1,13 @@
 import { Etymology } from "./etymology.model";
 import { Word } from "./word.model";
 
-export class WordComplete {
-    public word: Word;
+export class WordComplete extends Word {
     public etymologies: Etymology[];
 
     constructor(json?) {
-        this.etymologies = [];
         if (json) {
-            this.word = new Word(json)
+            super(json);
+            this.etymologies = [];
             for (let etymology of json.etymologies) {
                 this.etymologies.push(new Etymology(etymology));
             }

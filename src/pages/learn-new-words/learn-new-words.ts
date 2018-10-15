@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { WordComplete } from '../../models/word-complete.model';
 
 /**
@@ -18,15 +18,17 @@ export class LearnNewWordsPage {
   public words: WordComplete[];
   public word: WordComplete;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController
+    ) {
     this.words = navParams.get('words');
   }
 
-  ionViewDidLoad() {
-    // this.getWord();
-  }
+  ionViewDidLoad() {}
 
-  private getWord() {
-    this.word = this.words.pop();
+  public closeModal() {
+    this.viewCtrl.dismiss();
   }
 }

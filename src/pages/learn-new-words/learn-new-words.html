@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Aprender nuevas palabras</ion-title>
+    <ion-title>Nuevas palabras</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -72,12 +72,29 @@
     </ion-slide>
 
     <ion-slide>
-      <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/> -->
-      <h2 class="slide-title">¡Excelente!</h2>
-      <button ion-button large clear icon-end color="primary">
-        Continue
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
+      <div class="section">
+        <ion-grid style="height: 100%">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <h1 class="slide-title">¡Excelente!</h1>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <ion-grid style="height: 80%;">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+            <ion-col>
+              <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/> -->
+              <button ion-button (click)="closeModal()" color="success" block>Terminar</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
     </ion-slide>
   </ion-slides>
 </ion-content>

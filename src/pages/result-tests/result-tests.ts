@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, ViewController, NavParams } from 'ionic-angular';
 import { Word } from '../../models/word.model';
 
-/**
- * Generated class for the ResultTestsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-result-tests',

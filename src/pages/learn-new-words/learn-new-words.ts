@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { WordComplete } from '../../models/word-complete.model';
 
-/**
- * Generated class for the LearnNewWordsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-learn-new-words',
@@ -25,8 +18,6 @@ export class LearnNewWordsPage {
     ) {
     this.words = navParams.get('words');
   }
-
-  ionViewDidLoad() {}
 
   public closeModal() {
     this.viewCtrl.dismiss();

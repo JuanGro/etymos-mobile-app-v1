@@ -6,13 +6,6 @@ import { TestComplete } from './../../models/test-complete.model';
 import { Word } from '../../models/word.model';
 import { ResultTestsPage } from '../result-tests/result-tests';
 
-/**
- * Generated class for the TestOrthographyPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-test-orthography',

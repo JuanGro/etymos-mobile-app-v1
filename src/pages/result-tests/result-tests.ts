@@ -31,14 +31,14 @@ export class ResultTestsPage {
   }
 
   private practiceWords() {
+    const loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
     this.httpService.postWords(this.words_to_practice, "https://etymos.herokuapp.com/complete_words")
     .subscribe(
       words => {
-        const loader = this.loadingCtrl.create({
-          content: "Please wait..."
-        });
-        loader.present();
-
         let wordList: WordComplete[] = [];
 
         if (words) {
@@ -49,14 +49,16 @@ export class ResultTestsPage {
             { 
               words: wordList
             });
+          if (loader) loader.dismiss();
           modal.present();
           this.viewCtrl.dismiss();
         } else {
+          if (loader) loader.dismiss();
           this.showAlert('Error :(', '¡No existen palabras!', 'OK');
         }
-        loader.dismiss();
       },
       error => {
+        if (loader) loader.dismiss();
         this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
       }
     );

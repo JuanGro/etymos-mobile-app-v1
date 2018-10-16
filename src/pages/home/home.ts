@@ -31,14 +31,14 @@ export class HomePage {
   }
 
   private getTests() {
+    const loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
     this.httpService.get('https://etymos.herokuapp.com/random_tests')
     .subscribe(
       tests => {
-        const loader = this.loadingCtrl.create({
-          content: "Please wait..."
-        });
-        loader.present();
-
         let testList: TestComplete[] = [];
 
         if (tests) {
@@ -51,27 +51,29 @@ export class HomePage {
               words_answered_correctly: [],
               words_to_practice: []
             });
+          if (loader) loader.dismiss();
           modal.present();
         } else {
+          if (loader) loader.dismiss();
           this.showAlert('Error :(', '¡No existen tests!', 'OK');
         }
-        loader.dismiss();
       },
       error => {
+        if (loader) loader.dismiss();
         this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
       }
     );
   }
 
   private getWords() {
+    const loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
     this.httpService.get('https://etymos.herokuapp.com/random_words')
     .subscribe(
       words => {
-        const loader = this.loadingCtrl.create({
-          content: "Please wait..."
-        });
-        loader.present();
-
         let wordList: WordComplete[] = [];
 
         if (words) {
@@ -82,13 +84,15 @@ export class HomePage {
             { 
               words: wordList
             });
+          if (loader) loader.dismiss();
           modal.present();
         } else {
+          if (loader) loader.dismiss();
           this.showAlert('Error :(', '¡No existen palabras!', 'OK');
         }
-        loader.dismiss();
       },
       error => {
+        if (loader) loader.dismiss();
         this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
       }
     );

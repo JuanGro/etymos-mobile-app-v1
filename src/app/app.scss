@@ -18,7 +18,7 @@
 div.section, div.section-welcome {
     height: 50%;
     border-bottom-style: solid;
-    border-block-end-width: 1px;
+    border-block-end-width: 0.5px;
     border-bottom-color: lightgray;
 }
 
@@ -32,11 +32,11 @@ div.options {
 }
 
 h1 {
-    font-size: 300%;
+    font-size: 200%;
 }
 
 h2 {
-    font-size: 150%;
+    font-size: 100%;
 }
 
 .no-scroll .scroll-content{

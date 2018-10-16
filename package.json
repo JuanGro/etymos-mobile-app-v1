@@ -1,8 +1,7 @@
 {
   "name": "etymos",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Juan Manuel Guerrero Hernández",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -44,7 +43,7 @@
     "@ionic/lab": "1.0.11",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "Aplicación para la mejora de la ortografía.",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -54,8 +53,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {}
     },
-    "platforms": [
-      "ios"
-    ]
+    "platforms": []
   }
 }

@@ -14,3 +14,40 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+div.section-welcome {
+    height: 50%;
+    color: #FFF;
+    background-color: color($colors, primary);
+}
+
+div.section {
+    height: 50%;
+    border-bottom-style: solid;
+    border-block-end-width: 0.5px;
+    border-bottom-color: gray;
+}
+
+div.options {
+    height: 33%;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+.no-scroll .scroll-content{
+    overflow: hidden;
+}
+
+ion-icon {
+    font-size: 500%; //Preferred size here
+}
+
+.slide-zoom {
+    height: 100%;
+}

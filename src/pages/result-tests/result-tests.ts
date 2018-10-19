@@ -36,7 +36,7 @@ export class ResultTestsPage {
     });
     loader.present();
 
-    this.httpService.postWords(this.words_to_practice, "https://etymos.herokuapp.com/complete_words")
+    this.httpService.postWords(this.words_to_practice, "complete_words")
     .subscribe(
       words => {
         let wordList: WordComplete[] = [];

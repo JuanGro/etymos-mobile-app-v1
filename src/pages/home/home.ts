@@ -36,7 +36,7 @@ export class HomePage {
     });
     loader.present();
 
-    this.httpService.get('https://etymos.herokuapp.com/random_tests')
+    this.httpService.get('random_tests')
     .subscribe(
       tests => {
         let testList: TestComplete[] = [];
@@ -71,7 +71,7 @@ export class HomePage {
     });
     loader.present();
 
-    this.httpService.get('https://etymos.herokuapp.com/random_words')
+    this.httpService.get('random_words')
     .subscribe(
       words => {
         let wordList: WordComplete[] = [];

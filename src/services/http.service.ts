@@ -4,13 +4,15 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService {
+  public urlAPI: string;
 
   constructor(private http: Http) {
+    this.urlAPI = "https://etymos.herokuapp.com/";
   }
 
   public get(url: string) {
     return this.http
-        .get(url)
+        .get(this.urlAPI + url)
         .map((response: Response) => {
             return response.json();
         });
@@ -25,7 +27,7 @@ export class HttpService {
     let postData = { "words": wordsArray };
 
     return this.http
-        .post(url, postData, requestOptions)
+        .post(this.urlAPI + url, postData, requestOptions)
         .map((response: Response) => {
           return response.json();
         });

@@ -13,19 +13,22 @@ import { ResultTestsPage } from '../pages/result-tests/result-tests';
 
 // Services
 import { HttpService } from './../services/http.service';
+import { LearnNewWordsPageModule } from '../pages/learn-new-words/learn-new-words.module';
+import { ResultTestsPageModule } from '../pages/result-tests/result-tests.module';
+import { TestOrthographyPageModule } from '../pages/test-orthography/test-orthography.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    TestOrthographyPage,
-    LearnNewWordsPage,
-    ResultTestsPage
+    HomePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    LearnNewWordsPageModule,
+    ResultTestsPageModule,
+    TestOrthographyPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

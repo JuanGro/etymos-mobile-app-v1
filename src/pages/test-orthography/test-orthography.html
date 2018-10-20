@@ -6,8 +6,8 @@
 
 <ion-content text-center class="no-scroll">
   <div class="section">
-    <ion-grid style="height: 100%">
-      <ion-row justify-content-center align-items-center style="height: 100%">
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
         <ion-col>
           <h1>{{ test?.phrase }}</h1>
         </ion-col>
@@ -17,8 +17,8 @@
 
   <div class="section">
     <div *ngFor="let option of test?.options" class="options">
-      <ion-grid style="height: 100%;">
-        <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
           <ion-col>
             <button ion-button (click)="sendAnswer(option?.correct)" color="primary" block>{{ option?.word_option }}</button>
           </ion-col>

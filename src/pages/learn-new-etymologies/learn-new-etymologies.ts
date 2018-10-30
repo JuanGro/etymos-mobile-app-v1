@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LearnNewEtimologiesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { Etymology } from '../../models/etymology.model';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'learn-new-etymologies.html',
 })
 export class LearnNewEtymologiesPage {
+  public etymologies: Etymology[];
+  public etymology: Etymology;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public modalCtrl: ModalController
+    ) {
+    this.etymologies = navParams.get('etymologies');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LearnNewEtymologiesPage');
+  public continue() {
+    this.viewCtrl.dismiss();
   }
-
 }

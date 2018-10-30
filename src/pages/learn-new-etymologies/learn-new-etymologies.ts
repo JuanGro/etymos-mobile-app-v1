@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-learn-new-etimologies',
-  templateUrl: 'learn-new-etimologies.html',
+  selector: 'page-learn-new-etymologies',
+  templateUrl: 'learn-new-etymologies.html',
 })
-export class LearnNewEtimologiesPage {
+export class LearnNewEtymologiesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LearnNewEtimologiesPage');
+    console.log('ionViewDidLoad LearnNewEtymologiesPage');
   }
 
 }

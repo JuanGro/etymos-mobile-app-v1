@@ -6,17 +6,25 @@ import { HttpService } from '../../services/http.service';
 
 // Model
 import { TestComplete } from './../../models/test-complete.model';
+import { WordComplete } from '../../models/word-complete.model';
+import { Etymology } from '../../models/etymology.model';
 
 // Pages
 import { TestOrthographyPage } from './../../pages/test-orthography/test-orthography';
 import { LearnNewWordsPage } from './../../pages/learn-new-words/learn-new-words';
-import { WordComplete } from '../../models/word-complete.model';
+import { LearnNewEtymologiesPage } from './../../pages/learn-new-etymologies/learn-new-etymologies';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  public loadingMessage: string = "Por favor espere..."
+  public errorTitle: string = "¡Error!"
+  public errorInternetMessage: string = "Verifique su conexión a internet"
+  public errorServerMessage: string = "Intente de nuevo más tarde"
+  public okOption: string = "OK";
+
   constructor(
     public navCtrl: NavController,
     public httpService: HttpService,
@@ -28,11 +36,12 @@ export class HomePage {
   private redirectToPage(page: string) {
     if (page == 'testOrthography') this.getTests();
     else if (page == 'learnNewWords') this.getWords();
+    else if (page == 'learnNewEtymologies') this.getEtymologies();
   }
 
   private getTests() {
     const loader = this.loadingCtrl.create({
-      content: "Please wait..."
+      content: this.loadingMessage
     });
     loader.present();
 
@@ -55,19 +64,19 @@ export class HomePage {
           modal.present();
         } else {
           if (loader) loader.dismiss();
-          this.showAlert('Error :(', '¡No existen tests!', 'OK');
+          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
         }
       },
       error => {
         if (loader) loader.dismiss();
-        this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
+        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }
     );
   }
 
   private getWords() {
     const loader = this.loadingCtrl.create({
-      content: "Please wait..."
+      content: this.loadingMessage
     });
     loader.present();
 
@@ -88,12 +97,45 @@ export class HomePage {
           modal.present();
         } else {
           if (loader) loader.dismiss();
-          this.showAlert('Error :(', '¡No existen palabras!', 'OK');
+          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
         }
       },
       error => {
         if (loader) loader.dismiss();
-        this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
+        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
+      }
+    );
+  }
+
+  private getEtymologies() {
+    const loader = this.loadingCtrl.create({
+      content: this.loadingMessage
+    });
+    loader.present();
+
+    this.httpService.get('random_etymologies')
+    .subscribe(
+      etymologies => {
+        let etymologyList: Etymology[] = [];
+
+        if (etymologies) {
+          for (let etymology of etymologies) {
+            etymologyList.push(new Etymology(etymology));
+          }
+          let modal = this.modalCtrl.create(LearnNewEtymologiesPage,
+            { 
+              etymologies: etymologyList
+            });
+          if (loader) loader.dismiss();
+          modal.present();
+        } else {
+          if (loader) loader.dismiss();
+          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+        }
+      },
+      error => {
+        if (loader) loader.dismiss();
+        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }
     );
   }

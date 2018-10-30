@@ -10,14 +10,14 @@ import { HomePage } from '../pages/home/home';
 import { TestOrthographyPage } from '../pages/test-orthography/test-orthography';
 import { LearnNewWordsPage } from '../pages/learn-new-words/learn-new-words';
 import { ResultTestsPage } from '../pages/result-tests/result-tests';
-import { LearnNewEtimologiesPage } from '../pages/learn-new-etimologies/learn-new-etimologies';
+import { LearnNewEtymologiesPage } from '../pages/learn-new-etymologies/learn-new-etymologies';
 
 // Services
 import { HttpService } from './../services/http.service';
 import { LearnNewWordsPageModule } from '../pages/learn-new-words/learn-new-words.module';
 import { ResultTestsPageModule } from '../pages/result-tests/result-tests.module';
 import { TestOrthographyPageModule } from '../pages/test-orthography/test-orthography.module';
-import { LearnNewEtimologiesPageModule } from '../pages/learn-new-etimologies/learn-new-etimologies.module';
+import { LearnNewEtymologiesPageModule } from '../pages/learn-new-etymologies/learn-new-etymologies.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { LearnNewEtimologiesPageModule } from '../pages/learn-new-etimologies/le
     LearnNewWordsPageModule,
     ResultTestsPageModule,
     TestOrthographyPageModule,
-    LearnNewEtimologiesPageModule
+    LearnNewEtymologiesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,7 +40,7 @@ import { LearnNewEtimologiesPageModule } from '../pages/learn-new-etimologies/le
     TestOrthographyPage,
     LearnNewWordsPage,
     ResultTestsPage,
-    LearnNewEtimologiesPage
+    LearnNewEtymologiesPage
   ],
   providers: [
     StatusBar,

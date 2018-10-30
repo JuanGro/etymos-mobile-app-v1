@@ -10,12 +10,14 @@ import { HomePage } from '../pages/home/home';
 import { TestOrthographyPage } from '../pages/test-orthography/test-orthography';
 import { LearnNewWordsPage } from '../pages/learn-new-words/learn-new-words';
 import { ResultTestsPage } from '../pages/result-tests/result-tests';
+import { LearnNewEtimologiesPage } from '../pages/learn-new-etimologies/learn-new-etimologies';
 
 // Services
 import { HttpService } from './../services/http.service';
 import { LearnNewWordsPageModule } from '../pages/learn-new-words/learn-new-words.module';
 import { ResultTestsPageModule } from '../pages/result-tests/result-tests.module';
 import { TestOrthographyPageModule } from '../pages/test-orthography/test-orthography.module';
+import { LearnNewEtimologiesPageModule } from '../pages/learn-new-etimologies/learn-new-etimologies.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { TestOrthographyPageModule } from '../pages/test-orthography/test-orthog
     HttpModule,
     LearnNewWordsPageModule,
     ResultTestsPageModule,
-    TestOrthographyPageModule
+    TestOrthographyPageModule,
+    LearnNewEtimologiesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +39,8 @@ import { TestOrthographyPageModule } from '../pages/test-orthography/test-orthog
     HomePage,
     TestOrthographyPage,
     LearnNewWordsPage,
-    ResultTestsPage
+    ResultTestsPage,
+    LearnNewEtimologiesPage
   ],
   providers: [
     StatusBar,

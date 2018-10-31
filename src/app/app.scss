@@ -17,18 +17,19 @@
 
 div.section, div.section-welcome {
     height: 50%;
+    color: color($colors, primary);
     border-bottom-style: solid;
     border-block-end-width: 0.5px;
-    border-bottom-color: lightgray;
-}
-
-div.section-welcome {
-    color: #FFF;
-    background-color: color($colors, primary);
+    border-bottom-color: color($colors, primary);
+    background-color: color($colors, light);
 }
 
 div.options {
     height: 33%;
+}
+
+ion-title {
+    text-align: center;
 }
 
 ion-grid, ion-row {

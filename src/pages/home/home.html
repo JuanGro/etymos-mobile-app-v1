@@ -1,8 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Etymos
-    </ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Etymos</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,16 +18,34 @@
   </div>
 
   <div class="section">
-    <ion-grid>
-      <ion-row justify-content-center align-items-center>
-        <ion-col>
-          <button ion-button (click)="redirectToPage('testOrthography')" color="primary" block>Comprobar ortografía</button>
-          <br><br>
-          <button ion-button (click)="redirectToPage('learnNewWords')" color="primary" block>Aprender palabras</button>
-          <br><br>
-          <button ion-button (click)="redirectToPage('learnNewEtymologies')" color="primary" block>Aprender etimologías</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div class="options">
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
+          <ion-col>
+            <button ion-button (click)="redirectToPage('testOrthography')" color="primary" block>Comprobar ortografía</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="options">
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
+          <ion-col>
+            <button ion-button (click)="redirectToPage('learnNewWords')" color="primary" block>Aprender palabras</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="options">
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
+          <ion-col>
+            <button ion-button (click)="redirectToPage('learnNewEtymologies')" color="primary" block>Aprender etimologías</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
 </ion-content>

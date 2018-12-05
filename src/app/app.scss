@@ -15,13 +15,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-div.section, div.section-welcome {
+div.section-up, div.section-down {
     height: 50%;
     color: color($colors, primary);
+    background-color: color($colors, light);
+}
+
+div.section-up {
     border-bottom-style: solid;
     border-block-end-width: 0.5px;
     border-bottom-color: color($colors, primary);
-    background-color: color($colors, light);
 }
 
 div.options {

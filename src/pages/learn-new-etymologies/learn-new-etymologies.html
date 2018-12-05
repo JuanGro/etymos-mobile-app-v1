@@ -8,15 +8,15 @@
 
   <ion-slides pager>
     <ion-slide *ngFor="let etymology of etymologies">
-      <div class="section">
+      <div class="section-up">
         <ion-grid>
           <ion-row justify-content-center align-items-center>
             <img src="{{ etymology?.image_etymology }}"/>
           </ion-row>
         </ion-grid>
       </div>
-    
-      <div class="section">
+
+      <div class="section-down">
         <ion-grid>
           <ion-row justify-content-center align-items-center>
             <ion-col>
@@ -30,7 +30,7 @@
     </ion-slide>
 
     <ion-slide>
-      <div class="section">
+      <div class="section-up">
         <ion-grid>
           <ion-row justify-content-center align-items-center>
             <ion-col>
@@ -41,7 +41,7 @@
         </ion-grid>
       </div>
 
-      <div class="section">
+      <div class="section-down">
         <ion-grid>
           <ion-row justify-content-center align-items-center>
             <ion-col>

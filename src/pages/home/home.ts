@@ -45,7 +45,7 @@ export class HomePage {
     });
     loader.present();
 
-    this.httpService.get('random_tests')
+    this.httpService.get('lite_random_tests')
     .subscribe(
       tests => {
         let testList: TestComplete[] = [];
@@ -80,7 +80,7 @@ export class HomePage {
     });
     loader.present();
 
-    this.httpService.get('random_words')
+    this.httpService.get('lite_random_words')
     .subscribe(
       words => {
         let wordList: WordComplete[] = [];
@@ -113,7 +113,7 @@ export class HomePage {
     });
     loader.present();
 
-    this.httpService.get('random_etymologies')
+    this.httpService.get('lite_random_etymologies')
     .subscribe(
       etymologies => {
         let etymologyList: Etymology[] = [];

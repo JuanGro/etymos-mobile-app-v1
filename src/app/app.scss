@@ -17,7 +17,6 @@
 
 div.section-up, div.section-down {
     height: 50%;
-    color: color($colors, primary);
     background-color: color($colors, light);
 }
 
@@ -39,6 +38,10 @@ ion-grid, ion-row {
     height: 100%;
 }
 
+ion-icon, p, h1, h2, h3, h4 {
+    color: color($colors, primary);
+}
+
 h1 {
     font-size: 200%;
 }
@@ -55,12 +58,12 @@ h4 {
     font-size: 150%;
 }
 
-.no-scroll .scroll-content{
-    overflow: hidden;
-}
-
 ion-icon {
     font-size: 500%; //Preferred size here
+}
+
+.no-scroll .scroll-content{
+    overflow: hidden;
 }
 
 .slide-zoom {

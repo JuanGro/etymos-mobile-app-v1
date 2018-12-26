@@ -61,7 +61,11 @@ export class HomePage {
               words_to_practice: []
             });
           if (loader) loader.dismiss();
-          modal.present();
+          if (testList.length > 0) {
+            modal.present();
+          } else {
+            this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          }
         } else {
           if (loader) loader.dismiss();
           this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
@@ -94,7 +98,11 @@ export class HomePage {
               words: wordList
             });
           if (loader) loader.dismiss();
-          modal.present();
+          if (wordList.length > 0) {
+            modal.present();
+          } else {
+            this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          }
         } else {
           if (loader) loader.dismiss();
           this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
@@ -127,7 +135,11 @@ export class HomePage {
               etymologies: etymologyList
             });
           if (loader) loader.dismiss();
-          modal.present();
+          if (etymologyList.length > 0) {
+            modal.present();
+          } else {
+            this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          }
         } else {
           if (loader) loader.dismiss();
           this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);

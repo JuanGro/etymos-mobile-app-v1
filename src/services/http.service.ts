@@ -7,7 +7,7 @@ export class HttpService {
   public urlAPI: string;
 
   constructor(private http: Http) {
-    this.urlAPI = "https://etymos.herokuapp.com/";
+    this.urlAPI = "http://167.99.150.11/";
   }
 
   public get(url: string) {

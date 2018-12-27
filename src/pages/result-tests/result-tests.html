@@ -9,33 +9,33 @@
     <ion-row>
       <ion-col>
         <ion-card *ngIf="words_answered_correctly.length > 0">
-          <ion-card-header color="primary">
+          <ion-card-header>
             Respuestas correctas
           </ion-card-header>
         
           <ion-list *ngFor="let wordCorrect of words_answered_correctly">
             <button ion-item detail-none>
-              <ion-icon name="checkmark-circle" item-end></ion-icon>
+              <ion-icon name="checkmark-circle" color="success" item-end></ion-icon>
               {{ wordCorrect?.word_word }}
             </button>
           </ion-list>
         </ion-card>
 
         <ion-card *ngIf="words_to_practice.length > 0">
-          <ion-card-header color="primary">
+          <ion-card-header>
             Palabras a practicar
           </ion-card-header>
         
           <ion-list *ngFor="let wordIncorrect of words_to_practice">
             <button ion-item detail-none>
-              <ion-icon name="close-circle" item-end></ion-icon>
+              <ion-icon name="close-circle" color="danger" item-end></ion-icon>
               {{ wordIncorrect?.word_word }}
             </button>
           </ion-list>
         </ion-card>
         <br>
-        <button *ngIf="words_to_practice.length == 0" (click)="sendToHome()" ion-button color="primary" block>Terminar</button>
-        <button *ngIf="words_to_practice.length > 0" (click)="practiceWords()" ion-button color="primary" block>Practicar palabras</button>
+        <button *ngIf="words_to_practice.length == 0" (click)="sendToHome()" ion-button block>Terminar</button>
+        <button *ngIf="words_to_practice.length > 0" (click)="practiceWords()" ion-button block>Practicar palabras</button>
       </ion-col>
     </ion-row>
   </ion-grid>

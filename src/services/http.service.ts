@@ -7,7 +7,7 @@ export class HttpService {
   public urlAPI: string;
 
   constructor(private http: Http) {
-    this.urlAPI = "http://167.99.150.11/";
+    this.urlAPI = "https://www.etymosapp.com/";
   }
 
   public get(url: string) {

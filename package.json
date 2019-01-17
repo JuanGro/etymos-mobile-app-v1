@@ -1,6 +1,6 @@
 {
-  "name": "etymos",
-  "version": "0.0.7",
+  "name": "etymos-med",
+  "version": "0.0.1",
   "author": "Juan Manuel Guerrero Hernández",
   "private": true,
   "scripts": {
@@ -44,7 +44,7 @@
     "@ionic/lab": "1.0.11",
     "typescript": "~2.6.2"
   },
-  "description": "Aplicación para la mejora de la ortografía.",
+  "description": "Aplicación para la mejora de la ortografía en temas médicos.",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},

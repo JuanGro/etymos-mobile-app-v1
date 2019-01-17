@@ -10,19 +10,19 @@ import { Etymology } from '../../models/etymology.model';
   templateUrl: 'learn-new-etymologies.html',
 })
 export class LearnNewEtymologiesPage {
-  private etymologies: Etymology[];
+  public etymologies: Etymology[];
 
   constructor(
     private navParams: NavParams,
     private viewCtrl: ViewController
     ) {
-    this.etymologies = navParams.get('etymologies');
+    this.etymologies = this.navParams.get('etymologies');
   }
 
   /**
    * Method to dismiss the current modal
    */
-  private continue() {
+  public continue() {
     this.viewCtrl.dismiss();
   }
 }

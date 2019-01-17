@@ -36,7 +36,7 @@ export class HomePage {
    * Method to redirect to page and make the GET Request of the resource needed
    * @param page: Page to redirect
    */
-  private redirectToPage(page: string) {
+  public redirectToPage(page: string) {
     if (page == 'testOrthography') this.getTests();
     else if (page == 'learnNewWords') this.getWords();
     else if (page == 'learnNewEtymologies') this.getEtymologies();

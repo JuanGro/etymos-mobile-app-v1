@@ -19,18 +19,21 @@ export class ResultTestsPage {
   public words_answered_correctly: Word[];
 
   constructor(
-    public modalCtrl: ModalController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    public httpService: HttpService
+    private modalCtrl: ModalController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private httpService: HttpService
     ) {
-    this.words_answered_correctly = navParams.get('words_answered_correctly');
-    this.words_to_practice = navParams.get('words_to_practice');
+    this.words_answered_correctly = this.navParams.get('words_answered_correctly');
+    this.words_to_practice = this.navParams.get('words_to_practice');
   }
 
-  private practiceWords() {
+  /**
+   * Method to get the words to practice if there were mistakes
+   */
+  public practiceWords() {
     const loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
@@ -64,7 +67,13 @@ export class ResultTestsPage {
     );
   }
 
-  public showAlert(title: string, msg: string, buttonMsg: string) {
+  /**
+   * Method to show an alert with the message specified
+   * @param title: Title of the alert
+   * @param msg: Text that explains the alert
+   * @param buttonMsg: Message that includes the button
+   */
+  private showAlert(title: string, msg: string, buttonMsg: string) {
     const alert = this.alertCtrl.create({
       title: title,
       subTitle: msg,
@@ -73,7 +82,10 @@ export class ResultTestsPage {
     alert.present();
   }
 
-  private sendToHome() {
+  /**
+   * Method to hide the current modal
+   */
+  public sendToHome() {
     this.viewCtrl.dismiss();
   }
 }

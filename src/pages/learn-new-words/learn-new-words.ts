@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { WordComplete } from '../../models/word-complete.model';
 
 @IonicPage()
@@ -8,26 +8,31 @@ import { WordComplete } from '../../models/word-complete.model';
   templateUrl: 'learn-new-words.html',
 })
 export class LearnNewWordsPage {
-  public words: WordComplete[];
+  private words: WordComplete[];
   public word: WordComplete;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController,
-    public modalCtrl: ModalController
+    private navParams: NavParams,
+    private viewCtrl: ViewController,
+    private modalCtrl: ModalController
     ) {
-    this.words = navParams.get('words');
+    this.words = this.navParams.get('words');
   }
 
   ionViewDidLoad() {
     this.getWord();
   }
 
+  /**
+   * Method to get the current word to see
+   */
   private getWord() {
     this.word = this.words.pop();
   }
 
+  /**
+   * Method to create a new modal with the next word to see
+   */
   public continue() {
     if (this.words.length > 0) {
       let modal = this.modalCtrl.create(LearnNewWordsPage,

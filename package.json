@@ -44,7 +44,7 @@
     "@ionic/lab": "1.0.11",
     "typescript": "~2.6.2"
   },
-  "description": "Aplicación para la mejora de la ortografía en temas médicos.",
+  "description": "Aplicación para la mejora de la ortografía.",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, LoadingController, AlertController } from 'ionic-angular';
+import { ModalController, LoadingController, AlertController } from 'ionic-angular';
 
 // Service
 import { HttpService } from '../../services/http.service';
@@ -19,20 +19,23 @@ import { LearnNewEtymologiesPage } from './../../pages/learn-new-etymologies/lea
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public loadingMessage: string = "Por favor espere..."
-  public errorTitle: string = "¡Error!"
-  public errorInternetMessage: string = "Verifique su conexión a internet"
-  public errorServerMessage: string = "Intente de nuevo más tarde"
-  public okOption: string = "OK";
+  private loadingMessage: string = "Por favor espere..."
+  private errorTitle: string = "¡Error!"
+  private errorInternetMessage: string = "Verifique su conexión a internet"
+  private errorServerMessage: string = "Intente de nuevo más tarde"
+  private okOption: string = "OK";
 
   constructor(
-    public navCtrl: NavController,
-    public httpService: HttpService,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    public modalCtrl: ModalController
+    private httpService: HttpService,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private modalCtrl: ModalController
   ) {}
 
+  /**
+   * Method to redirect to page and make the GET Request of the resource needed
+   * @param page: Page to redirect
+   */
   private redirectToPage(page: string) {
     if (page == 'testOrthography') this.getTests();
     else if (page == 'learnNewWords') this.getWords();
@@ -78,6 +81,9 @@ export class HomePage {
     );
   }
 
+  /**
+   * Method to request a number of random words
+   */
   private getWords() {
     const loader = this.loadingCtrl.create({
       content: this.loadingMessage
@@ -115,6 +121,9 @@ export class HomePage {
     );
   }
 
+  /**
+   * Method to request a number of random etymologies
+   */
   private getEtymologies() {
     const loader = this.loadingCtrl.create({
       content: this.loadingMessage
@@ -152,7 +161,13 @@ export class HomePage {
     );
   }
 
-  public showAlert(title: string, msg: string, buttonMsg: string) {
+  /**
+   * Method to show an alert banner with the text specified
+   * @param title: Title of the alert
+   * @param msg: Text that explains the alert
+   * @param buttonMsg: Text that the main button will include
+   */
+  private showAlert(title: string, msg: string, buttonMsg: string) {
     const alert = this.alertCtrl.create({
       title: title,
       subTitle: msg,

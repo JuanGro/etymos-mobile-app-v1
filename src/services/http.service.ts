@@ -14,7 +14,7 @@ export class HttpService {
   }
 
   /**
-   * This method is to simplify the GET Requests in components
+   * Method is to simplify the GET Requests in components
    * @param url: The URL without the API URL to get the resource
    */
   public get(url: string) {
@@ -26,7 +26,7 @@ export class HttpService {
   }
 
   /**
-   * This method is to get the words that the user has not answered correctly
+   * Method is to get the words that the user has not answered correctly
    * @param wordsArray: The words answered incorrectly
    * @param url: The url to get the complete words serialized
    */

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+
+// Model
 import { Etymology } from '../../models/etymology.model';
 
 @IonicPage()
@@ -9,17 +11,17 @@ import { Etymology } from '../../models/etymology.model';
 })
 export class LearnNewEtymologiesPage {
   public etymologies: Etymology[];
-  public etymology: Etymology;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController,
-    public modalCtrl: ModalController
+    private navParams: NavParams,
+    private viewCtrl: ViewController
     ) {
-    this.etymologies = navParams.get('etymologies');
+    this.etymologies = this.navParams.get('etymologies');
   }
 
+  /**
+   * Method to dismiss the current modal
+   */
   public continue() {
     this.viewCtrl.dismiss();
   }

@@ -12,29 +12,36 @@ import { ResultTestsPage } from '../result-tests/result-tests';
   templateUrl: 'test-orthography.html',
 })
 export class TestOrthographyPage {
-  public test: TestComplete;
-  public tests: TestComplete[];
-  public words_to_practice: Word[];
-  public words_answered_correctly: Word[];
+  private test: TestComplete;
+  private tests: TestComplete[];
+  private words_to_practice: Word[];
+  private words_answered_correctly: Word[];
 
   constructor(
-    public modalCtrl: ModalController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController
+    private modalCtrl: ModalController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController
     ) {
-    this.tests = navParams.get('tests');
-    this.words_answered_correctly = navParams.get('words_answered_correctly');
-    this.words_to_practice = navParams.get('words_to_practice');
+    this.tests = this.navParams.get('tests');
+    this.words_answered_correctly = this.navParams.get('words_answered_correctly');
+    this.words_to_practice = this.navParams.get('words_to_practice');
   }
 
   ionViewDidLoad() {
     this.getTest();
   }
 
+  /**
+   * Method that gets a single test to display
+   */
   private getTest() {
     this.test = this.tests.pop();
   }
 
+  /**
+   * Method that checks if the answer is correct
+   * @param option: Option selected by the user
+   */
   public sendAnswer(option: boolean) {
     if (option == false) this.words_to_practice.push(new Word(this.test.word));
     else this.words_answered_correctly.push(new Word(this.test.word));

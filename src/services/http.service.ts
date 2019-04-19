@@ -10,7 +10,7 @@ export class HttpService {
   public urlAPI: string;
 
   constructor(private http: Http) {
-    this.urlAPI = "https://www.etymosapp.com/";
+    this.urlAPI = "http://www.etymosapp.com:5000/";
   }
 
   /**

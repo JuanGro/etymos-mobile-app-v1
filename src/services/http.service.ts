@@ -12,11 +12,6 @@ export class HttpService {
 
   constructor(private http: HTTP) {
     this.urlAPI = "http://www.etymosapp.com:5000/";
-
-    this.headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    };
   }
 
   /**
@@ -34,7 +29,7 @@ export class HttpService {
    */
   public postWords(wordsArray: Word[], url: string) {
     let postData = { "words": wordsArray };
-
-    return this.http.post(this.urlAPI + url, postData, {});
+    this.http.setDataSerializer('json');
+    return this.http.post(this.urlAPI + url, postData, {"Content-Type": "application/json"});
   }
 }

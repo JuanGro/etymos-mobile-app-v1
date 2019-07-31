@@ -62,7 +62,7 @@ export class ResultTestsPage {
         }
       })
     .catch(error => {
-        console.log(error.error);
+        // console.log(error.error);
         if (loader) loader.dismiss();
         this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }

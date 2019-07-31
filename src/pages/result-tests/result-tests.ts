@@ -17,6 +17,11 @@ import { LearnNewWordsPage } from '../learn-new-words/learn-new-words';
 export class ResultTestsPage {
   public words_to_practice: Word[];
   public words_answered_correctly: Word[];
+  private loadingMessage: string = "Por favor espere...";
+  private errorTitle: string = "¡Error!";
+  private errorInternetMessage: string = "Verifique su conexión a internet";
+  private errorServerMessage: string = "Intente de nuevo más tarde";
+  private okOption: string = "OK";
 
   constructor(
     private modalCtrl: ModalController,
@@ -35,19 +40,15 @@ export class ResultTestsPage {
    */
   public practiceWords() {
     const loader = this.loadingCtrl.create({
-      content: "Please wait..."
+      content: this.loadingMessage
     });
     loader.present();
 
     this.httpService.postWords(this.words_to_practice, "complete_words")
-    .subscribe(
+    .then(
       words => {
-        let wordList: WordComplete[] = [];
-
         if (words) {
-          for (let word of words) {
-            wordList.push(new WordComplete(word));
-          }
+          let wordList: WordComplete[] = JSON.parse(words.data);
           let modal = this.modalCtrl.create(LearnNewWordsPage,
             { 
               words: wordList
@@ -57,12 +58,13 @@ export class ResultTestsPage {
           this.viewCtrl.dismiss();
         } else {
           if (loader) loader.dismiss();
-          this.showAlert('Error :(', '¡No existen palabras!', 'OK');
+          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
         }
-      },
-      error => {
+      })
+    .catch(error => {
+        console.log(error.error);
         if (loader) loader.dismiss();
-        this.showAlert('Error :(', 'Verifique su conexión a internet', 'OK');
+        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }
     );
   }

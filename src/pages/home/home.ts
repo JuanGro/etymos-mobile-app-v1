@@ -19,10 +19,10 @@ import { LearnNewEtymologiesPage } from './../../pages/learn-new-etymologies/lea
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private loadingMessage: string = "Por favor espere..."
-  private errorTitle: string = "¡Error!"
-  private errorInternetMessage: string = "Verifique su conexión a internet"
-  private errorServerMessage: string = "Intente de nuevo más tarde"
+  private loadingMessage: string = "Por favor espere...";
+  private errorTitle: string = "¡Error!";
+  private errorInternetMessage: string = "Verifique su conexión a internet";
+  private errorServerMessage: string = "Intente de nuevo más tarde";
   private okOption: string = "OK";
 
   constructor(
@@ -49,15 +49,11 @@ export class HomePage {
     loader.present();
 
     this.httpService.get('lite_random_tests')
-    .subscribe(
+    .then(
       tests => {
-        let testList: TestComplete[] = [];
-
         if (tests) {
-          for (let test of tests) {
-            testList.push(new TestComplete(test));
-          }
-          let modal = this.modalCtrl.create(TestOrthographyPage,
+          const testList: TestComplete[] = JSON.parse(tests.data);
+          const modal = this.modalCtrl.create(TestOrthographyPage,
             { 
               tests: testList,
               words_answered_correctly: [],
@@ -73,8 +69,9 @@ export class HomePage {
           if (loader) loader.dismiss();
           this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
         }
-      },
-      error => {
+      })
+    .catch(error => {
+        // error.error to get the reason
         if (loader) loader.dismiss();
         this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }
@@ -91,15 +88,11 @@ export class HomePage {
     loader.present();
 
     this.httpService.get('lite_random_words')
-    .subscribe(
+    .then(
       words => {
-        let wordList: WordComplete[] = [];
-
-        if (words) {
-          for (let word of words) {
-            wordList.push(new WordComplete(word));
-          }
-          let modal = this.modalCtrl.create(LearnNewWordsPage,
+        if (words.data) {
+          const wordList: WordComplete[] = JSON.parse(words.data);
+          const modal = this.modalCtrl.create(LearnNewWordsPage,
             { 
               words: wordList
             });
@@ -113,8 +106,8 @@ export class HomePage {
           if (loader) loader.dismiss();
           this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
         }
-      },
-      error => {
+      })
+    .catch(error => {
         if (loader) loader.dismiss();
         this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }
@@ -131,14 +124,10 @@ export class HomePage {
     loader.present();
 
     this.httpService.get('lite_random_etymologies')
-    .subscribe(
+    .then(
       etymologies => {
-        let etymologyList: Etymology[] = [];
-
-        if (etymologies) {
-          for (let etymology of etymologies) {
-            etymologyList.push(new Etymology(etymology));
-          }
+        if (etymologies.data) {
+          let etymologyList: Etymology[] = JSON.parse(etymologies.data);
           let modal = this.modalCtrl.create(LearnNewEtymologiesPage,
             { 
               etymologies: etymologyList
@@ -153,8 +142,8 @@ export class HomePage {
           if (loader) loader.dismiss();
           this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
         }
-      },
-      error => {
+      })
+    .catch(error => {
         if (loader) loader.dismiss();
         this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
       }

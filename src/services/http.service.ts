@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import { HTTP } from '@ionic-native/http';
 import 'rxjs/Rx';
 
 // Models
@@ -8,9 +8,15 @@ import { Word } from "../models/word.model";
 @Injectable()
 export class HttpService {
   public urlAPI: string;
+  private headers: any; 
 
-  constructor(private http: Http) {
+  constructor(private http: HTTP) {
     this.urlAPI = "http://www.etymosapp.com:5000/";
+
+    this.headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    };
   }
 
   /**
@@ -18,11 +24,7 @@ export class HttpService {
    * @param url: The URL without the API URL to get the resource
    */
   public get(url: string) {
-    return this.http
-        .get(this.urlAPI + url)
-        .map((response: Response) => {
-            return response.json();
-        });
+    return this.http.get(this.urlAPI + url, {}, {})
   }
 
   /**
@@ -31,17 +33,8 @@ export class HttpService {
    * @param url: The url to get the complete words serialized
    */
   public postWords(wordsArray: Word[], url: string) {
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-    const requestOptions = new RequestOptions({ headers: headers });
-
     let postData = { "words": wordsArray };
 
-    return this.http
-        .post(this.urlAPI + url, postData, requestOptions)
-        .map((response: Response) => {
-          return response.json();
-        });
+    return this.http.post(this.urlAPI + url, postData, {});
   }
 }

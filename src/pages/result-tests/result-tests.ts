@@ -19,7 +19,6 @@ export class ResultTestsPage {
   public words_answered_correctly: Word[];
   private loadingMessage: string = "Por favor espere...";
   private errorTitle: string = "¡Error!";
-  private errorInternetMessage: string = "Verifique su conexión a internet";
   private errorServerMessage: string = "Intente de nuevo más tarde";
   private okOption: string = "OK";
 
@@ -64,7 +63,7 @@ export class ResultTestsPage {
     .catch(error => {
         // console.log(error.error);
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, LoadingController, AlertController } from 'ionic-angular';
+import { AppRate } from '@ionic-native/app-rate';
 
 // Service
 import { HttpService } from '../../services/http.service';
@@ -21,7 +22,6 @@ import { LearnNewEtymologiesPage } from './../../pages/learn-new-etymologies/lea
 export class HomePage {
   private loadingMessage: string = "Por favor espere...";
   private errorTitle: string = "¡Error!";
-  private errorInternetMessage: string = "Verifique su conexión a internet";
   private errorServerMessage: string = "Intente de nuevo más tarde";
   private okOption: string = "OK";
 
@@ -29,8 +29,26 @@ export class HomePage {
     private httpService: HttpService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private modalCtrl: ModalController
-  ) {}
+    private modalCtrl: ModalController,
+    private appRate: AppRate
+  ) {
+    this.appRate.preferences.storeAppURL = {
+      ios: '1439656044',
+      android: 'market://details?id=com.etymos.app'
+    };
+    this.appRate.preferences.customLocale = {
+      title: '¿Deseas calificarnos?',
+      message: '¡Con esto ayudarás a que siga gratis!',
+      cancelButtonLabel: 'No',
+      laterButtonLabel: 'Después',
+      rateButtonLabel: '¡Claro!',
+      yesButtonLabel: "¡Si!",
+      noButtonLabel: "No",
+      appRatePromptTitle: '¿Te gusta Etymos?',
+      feedbackPromptTitle: '¡Ayúdanos!',
+    };
+    this.appRate.promptForRating(true);
+  }
 
   /**
    * Method to redirect to page and make the GET Request of the resource needed
@@ -73,7 +91,7 @@ export class HomePage {
     .catch(error => {
         // error.error to get the reason
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }
@@ -109,7 +127,7 @@ export class HomePage {
       })
     .catch(error => {
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }
@@ -145,7 +163,7 @@ export class HomePage {
       })
     .catch(error => {
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, this.errorInternetMessage, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }

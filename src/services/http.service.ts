@@ -11,7 +11,10 @@ export class HttpService {
   private headers: any; 
 
   constructor(private http: HTTP) {
-    this.urlAPI = "http://www.etymosapp.com:5000/";
+    this.urlAPI = 'http://www.etymosapp.com:5000/';
+    this.headers = {
+      'Content-Type': 'application/json'
+    };
   }
 
   /**
@@ -19,7 +22,7 @@ export class HttpService {
    * @param url: The URL without the API URL to get the resource
    */
   public get(url: string) {
-    return this.http.get(this.urlAPI + url, {}, {})
+    return this.http.get(this.urlAPI + url, {}, this.headers);
   }
 
   /**
@@ -30,6 +33,6 @@ export class HttpService {
   public postWords(wordsArray: Word[], url: string) {
     let postData = { "words": wordsArray };
     this.http.setDataSerializer('json');
-    return this.http.post(this.urlAPI + url, postData, {"Content-Type": "application/json"});
+    return this.http.post(this.urlAPI + url, postData, this.headers);
   }
 }

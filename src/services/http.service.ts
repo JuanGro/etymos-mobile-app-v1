@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HTTP } from '@ionic-native/http';
-import 'rxjs/Rx';
+import { HTTP } from "@ionic-native/http";
+import "rxjs/Rx";
 
 // Models
 import { Word } from "../models/word.model";
@@ -11,10 +11,11 @@ export class HttpService {
   private headers: any; 
 
   constructor(private http: HTTP) {
-    this.urlAPI = 'http://www.etymosapp.com:5000/';
+    this.urlAPI = "http://www.etymosapp.com:5000/";
     this.headers = {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     };
+    this.http.setDataSerializer("json");
   }
 
   /**
@@ -32,7 +33,6 @@ export class HttpService {
    */
   public postWords(wordsArray: Word[], url: string) {
     let postData = { "words": wordsArray };
-    this.http.setDataSerializer('json');
     return this.http.post(this.urlAPI + url, postData, this.headers);
   }
 }

@@ -36,6 +36,17 @@ export class HomePage {
       ios: '1439656044',
       android: 'market://details?id=com.etymos.app'
     };
+    this.appRate.preferences.customLocale = {
+      title: '¿Deseas calificarnos?',
+      message: '¡Con esto ayudarás a que siga gratis!',
+      cancelButtonLabel: 'No',
+      laterButtonLabel: 'Después',
+      rateButtonLabel: '¡Claro!',
+      yesButtonLabel: "¡Si!",
+      noButtonLabel: "No",
+      appRatePromptTitle: '¿Te gusta Etymos?',
+      feedbackPromptTitle: '¡Ayúdanos!',
+    };
     this.appRate.promptForRating(true);
   }
 
@@ -80,7 +91,7 @@ export class HomePage {
     .catch(error => {
         // error.error to get the reason
         if (loader) loader.dismiss();
-        this.showAlert(error.status, error.error, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }
@@ -116,7 +127,7 @@ export class HomePage {
       })
     .catch(error => {
         if (loader) loader.dismiss();
-        this.showAlert(error.status, error.error, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }
@@ -152,7 +163,7 @@ export class HomePage {
       })
     .catch(error => {
         if (loader) loader.dismiss();
-        this.showAlert(error.status, error, this.okOption);
+        this.showAlert(this.errorTitle, error.error, this.okOption);
       }
     );
   }

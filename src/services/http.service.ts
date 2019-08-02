@@ -15,7 +15,6 @@ export class HttpService {
     this.headers = {
       "Content-Type": "application/json"
     };
-    this.http.setDataSerializer("json");
   }
 
   /**
@@ -33,6 +32,7 @@ export class HttpService {
    */
   public postWords(wordsArray: Word[], url: string) {
     let postData = { "words": wordsArray };
+    this.http.setDataSerializer("json");
     return this.http.post(this.urlAPI + url, postData, this.headers);
   }
 }

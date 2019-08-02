@@ -1,6 +1,6 @@
 {
   "name": "etymos",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "Juan Manuel Guerrero Hernández",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
     "@angular/compiler": "5.2.11",
-    "@angular/compiler-cli": "^8.2.0",
+    "@angular/compiler-cli": "5.2.11",
     "@angular/core": "5.2.11",
     "@angular/forms": "5.2.11",
     "@angular/platform-browser": "5.2.11",
@@ -67,8 +67,8 @@
       "cordova-plugin-apprate": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

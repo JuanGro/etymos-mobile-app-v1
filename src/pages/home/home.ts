@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, AlertController } from 'ionic-angular';
 import { AppRate } from '@ionic-native/app-rate';
 
@@ -19,7 +19,7 @@ import { LearnNewEtymologiesPage } from './../../pages/learn-new-etymologies/lea
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
   private loadingMessage: string = "Por favor espere...";
   private errorTitle: string = "¡Error!";
   private errorServerMessage: string = "Intente de nuevo más tarde";
@@ -31,21 +31,25 @@ export class HomePage {
     private alertCtrl: AlertController,
     private modalCtrl: ModalController,
     private appRate: AppRate
-  ) {
-    this.appRate.preferences.storeAppURL = {
-      ios: '1439656044',
-      android: 'market://details?id=com.etymos.app'
-    };
-    this.appRate.preferences.customLocale = {
-      title: '¿Deseas calificarnos?',
-      message: '¡Con esto ayudarás a que siga gratis!',
-      cancelButtonLabel: 'No',
-      laterButtonLabel: 'Después',
-      rateButtonLabel: '¡Claro!',
-      yesButtonLabel: "¡Si!",
-      noButtonLabel: "No",
-      appRatePromptTitle: '¿Te gusta Etymos?',
-      feedbackPromptTitle: '¡Ayúdanos!',
+  ) {}
+
+  ngOnInit() {
+    this.appRate.preferences = {
+      storeAppURL: {
+        ios: '1439656044',
+        android: 'market://details?id=com.etymos.app'
+      },
+      customLocale: {
+        title: '¿Deseas calificarnos?',
+        message: '¡Con esto ayudarás a que siga gratis!',
+        cancelButtonLabel: 'No',
+        laterButtonLabel: 'Después',
+        rateButtonLabel: '¡Claro!',
+        yesButtonLabel: "¡Si!",
+        noButtonLabel: "No",
+        appRatePromptTitle: '¿Te gusta Etymos?',
+        feedbackPromptTitle: '¡Ayúdanos!',
+      }
     };
     this.appRate.promptForRating(true);
   }

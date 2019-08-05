@@ -15,23 +15,19 @@ import { LearnNewEtymologiesPage } from '../pages/learn-new-etymologies/learn-ne
 
 // Services
 import { HttpService } from './../services/http.service';
-import { LearnNewWordsPageModule } from '../pages/learn-new-words/learn-new-words.module';
-import { ResultTestsPageModule } from '../pages/result-tests/result-tests.module';
-import { TestOrthographyPageModule } from '../pages/test-orthography/test-orthography.module';
-import { LearnNewEtymologiesPageModule } from '../pages/learn-new-etymologies/learn-new-etymologies.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TestOrthographyPage,
+    LearnNewWordsPage,
+    ResultTestsPage,
+    LearnNewEtymologiesPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    LearnNewWordsPageModule,
-    ResultTestsPageModule,
-    TestOrthographyPageModule,
-    LearnNewEtymologiesPageModule
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { NavParams, ViewController, ModalController } from 'ionic-angular';
 import { WordComplete } from '../../models/word-complete.model';
 
-@IonicPage()
 @Component({
   selector: 'page-learn-new-words',
   templateUrl: 'learn-new-words.html',

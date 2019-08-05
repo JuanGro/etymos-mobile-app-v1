@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 
 // Model
 import { Etymology } from '../../models/etymology.model';
 
-@IonicPage()
 @Component({
   selector: 'page-learn-new-etymologies',
   templateUrl: 'learn-new-etymologies.html',

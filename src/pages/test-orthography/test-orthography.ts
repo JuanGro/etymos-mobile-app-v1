@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavParams, ViewController } from 'ionic-angular';
+import { ModalController, NavParams, ViewController } from 'ionic-angular';
 
 // Model
 import { TestComplete } from './../../models/test-complete.model';
 import { Word } from '../../models/word.model';
 import { ResultTestsPage } from '../result-tests/result-tests';
 
-@IonicPage()
 @Component({
   selector: 'page-test-orthography',
   templateUrl: 'test-orthography.html',

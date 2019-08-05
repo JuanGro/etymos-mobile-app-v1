@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, ViewController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { ModalController, ViewController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
 // Service
 import { HttpService } from '../../services/http.service';
@@ -9,7 +9,6 @@ import { Word } from '../../models/word.model';
 import { WordComplete } from '../../models/word-complete.model';
 import { LearnNewWordsPage } from '../learn-new-words/learn-new-words';
 
-@IonicPage()
 @Component({
   selector: 'page-result-tests',
   templateUrl: 'result-tests.html',

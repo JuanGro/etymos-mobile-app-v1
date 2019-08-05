@@ -19,6 +19,7 @@ export class HttpService {
     this.headers = {
       "Content-Type": "application/json"
     };
+
     this.loadingMessage = "Por favor espere...";
     this.errorTitle = "¡Error!";
     this.errorServerMessage = "Intente de nuevo más tarde";

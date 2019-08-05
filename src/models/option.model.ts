@@ -3,7 +3,7 @@ export class Option {
     public word_option: string;
     public correct: boolean;
 
-    constructor(json?) {
+    constructor(json?: any) {
         if (json) {
             this.id = json.id;
             this.word_option = json.word_option;

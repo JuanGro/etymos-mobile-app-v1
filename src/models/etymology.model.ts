@@ -4,7 +4,7 @@ export class Etymology {
     public meaning_etymology: string;
     public image_etymology: string;
 
-    constructor(json?) {
+    constructor(json?: any) {
         if (json) {
             this.id = json.id;
             this.pattern = json.pattern;

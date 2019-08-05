@@ -6,7 +6,7 @@ export class TestComplete extends Test {
     public word: Word;
     public options: Option[];
 
-    constructor(json?) {
+    constructor(json?: any) {
         if (json) {
             super(json);
             this.options = [];

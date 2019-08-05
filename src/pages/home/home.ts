@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController, AlertController, Platform } from 'ionic-angular';
-import { AppRate } from '@ionic-native/app-rate';
+import { Component } from '@angular/core';
+import { ModalController, LoadingController, AlertController } from 'ionic-angular';
 
 // Service
 import { HttpService } from '../../services/http.service';
@@ -20,42 +19,13 @@ import { LearnNewEtymologiesPage } from './../../pages/learn-new-etymologies/lea
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private loadingMessage: string = "Por favor espere...";
-  private errorTitle: string = "¡Error!";
-  private errorServerMessage: string = "Intente de nuevo más tarde";
-  private okOption: string = "OK";
 
   constructor(
     private httpService: HttpService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private modalCtrl: ModalController,
-    private appRate: AppRate,
-    private platform: Platform
-  ) {
-    this.platform.ready().then(() => {
-      if (this.appRate) {
-        if (this.appRate.preferences) {
-          this.appRate.preferences.storeAppURL = {
-            ios: '1439656044',
-            android: 'market://details?id=com.etymos.app'
-          };
-          this.appRate.preferences.customLocale = {
-            title: '¿Deseas calificarnos?',
-            message: '¡Con esto ayudarás a que siga gratis!',
-            cancelButtonLabel: 'No',
-            laterButtonLabel: 'Después',
-            rateButtonLabel: '¡Claro!',
-            yesButtonLabel: "¡Si!",
-            noButtonLabel: "No",
-            appRatePromptTitle: '¿Te gusta Etymos?',
-            feedbackPromptTitle: '¡Ayúdanos!',
-          };
-          this.appRate.promptForRating(true);
-        }
-      }
-    });
-  }
+    private modalCtrl: ModalController
+  ) {}
 
   /**
    * Method to redirect to page and make the GET Request of the resource needed
@@ -69,7 +39,7 @@ export class HomePage {
 
   private getTests() {
     const loader = this.loadingCtrl.create({
-      content: this.loadingMessage
+      content: this.httpService.loadingMessage
     });
     loader.present();
 
@@ -88,17 +58,17 @@ export class HomePage {
           if (testList.length > 0) {
             modal.present();
           } else {
-            this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+            this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
           }
         } else {
           if (loader) loader.dismiss();
-          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
         }
       })
     .catch(error => {
         // error.error to get the reason
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, error.error, this.okOption);
+        this.showAlert(this.httpService.errorTitle, error.error, this.httpService.okOption);
       }
     );
   }
@@ -108,7 +78,7 @@ export class HomePage {
    */
   private getWords() {
     const loader = this.loadingCtrl.create({
-      content: this.loadingMessage
+      content: this.httpService.loadingMessage
     });
     loader.present();
 
@@ -125,16 +95,16 @@ export class HomePage {
           if (wordList.length > 0) {
             modal.present();
           } else {
-            this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+            this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
           }
         } else {
           if (loader) loader.dismiss();
-          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
         }
       })
     .catch(error => {
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, error.error, this.okOption);
+        this.showAlert(this.httpService.errorTitle, error.error, this.httpService.okOption);
       }
     );
   }
@@ -144,7 +114,7 @@ export class HomePage {
    */
   private getEtymologies() {
     const loader = this.loadingCtrl.create({
-      content: this.loadingMessage
+      content: this.httpService.loadingMessage
     });
     loader.present();
 
@@ -161,16 +131,16 @@ export class HomePage {
           if (etymologyList.length > 0) {
             modal.present();
           } else {
-            this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+            this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
           }
         } else {
           if (loader) loader.dismiss();
-          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
         }
       })
     .catch(error => {
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, error.error, this.okOption);
+        this.showAlert(this.httpService.errorTitle, error.error, this.httpService.okOption);
       }
     );
   }

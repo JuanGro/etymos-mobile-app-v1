@@ -17,10 +17,6 @@ import { LearnNewWordsPage } from '../learn-new-words/learn-new-words';
 export class ResultTestsPage {
   public words_to_practice: Word[];
   public words_answered_correctly: Word[];
-  private loadingMessage: string = "Por favor espere...";
-  private errorTitle: string = "¡Error!";
-  private errorServerMessage: string = "Intente de nuevo más tarde";
-  private okOption: string = "OK";
 
   constructor(
     private modalCtrl: ModalController,
@@ -29,7 +25,7 @@ export class ResultTestsPage {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private httpService: HttpService
-    ) {
+  ) {
     this.words_answered_correctly = this.navParams.get('words_answered_correctly');
     this.words_to_practice = this.navParams.get('words_to_practice');
   }
@@ -39,7 +35,7 @@ export class ResultTestsPage {
    */
   public practiceWords() {
     const loader = this.loadingCtrl.create({
-      content: this.loadingMessage
+      content: this.httpService.loadingMessage
     });
     loader.present();
 
@@ -57,13 +53,13 @@ export class ResultTestsPage {
           this.viewCtrl.dismiss();
         } else {
           if (loader) loader.dismiss();
-          this.showAlert(this.errorTitle, this.errorServerMessage, this.okOption);
+          this.showAlert(this.httpService.errorTitle, this.httpService.errorServerMessage, this.httpService.okOption);
         }
       })
     .catch(error => {
         // console.log(error.error);
         if (loader) loader.dismiss();
-        this.showAlert(this.errorTitle, error.error, this.okOption);
+        this.showAlert(this.httpService.errorTitle, error.error, this.httpService.okOption);
       }
     );
   }

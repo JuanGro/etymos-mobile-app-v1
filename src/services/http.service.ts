@@ -7,14 +7,22 @@ import { Word } from "../models/word.model";
 
 @Injectable()
 export class HttpService {
-  public urlAPI: string;
-  private headers: any; 
+  private urlAPI: string;
+  private headers: any;
+  public loadingMessage: string;
+  public errorTitle: string;
+  public errorServerMessage: string;
+  public okOption: string;
 
   constructor(private http: HTTP) {
     this.urlAPI = "http://www.etymosapp.com:5000/";
     this.headers = {
       "Content-Type": "application/json"
     };
+    this.loadingMessage = "Por favor espere...";
+    this.errorTitle = "¡Error!";
+    this.errorServerMessage = "Intente de nuevo más tarde";
+    this.okOption = "OK";
   }
 
   /**

@@ -4,7 +4,7 @@ import { Word } from "./word.model";
 export class WordComplete extends Word {
     public etymologies: Etymology[];
 
-    constructor(json?) {
+    constructor(json?: any) {
         if (json) {
             super(json);
             this.etymologies = [];

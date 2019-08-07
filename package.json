@@ -1,6 +1,6 @@
 {
   "name": "etymos",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "author": "Juan Manuel Guerrero Hernández",
   "private": true,
   "scripts": {
@@ -67,8 +67,8 @@
       "cordova-plugin-apprate": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

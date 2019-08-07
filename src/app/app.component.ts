@@ -31,6 +31,7 @@ export class MyApp {
   private askUserRateApp(appRate: AppRate) {
     if (appRate) {
       if (appRate.preferences) {
+        appRate.preferences.simpleMode = true;
         appRate.preferences.storeAppURL = {
           ios: '1439656044',
           android: 'market://details?id=com.etymos.app'
